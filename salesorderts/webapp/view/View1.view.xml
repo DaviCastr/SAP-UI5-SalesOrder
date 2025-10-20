@@ -1,6 +1,17 @@
 <mvc:View controllerName="apps.dflc.salesorderts.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
     <Page id="page" title="{i18n>title}">
+    <Text core:require="{ formatMessage: 'sap/base/strings/formatMessage' }"
+          text="{
+            parts:[
+              {path:'i18n>welcomeMsg'},
+              {path:'/usuario/nome'}
+            ],
+            formatter: 'formatMessage'
+        }"/>
+
+    <Button text="Hello World" press="onPress" />
     </Page>
 </mvc:View>
