@@ -1,17 +1,25 @@
-<mvc:View controllerName="apps.dflc.salesorderts.controller.View1"
+<mvc:View
+    controllerName="apps.dflc.salesorderts.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <Page id="page" title="{i18n>title}">
-    <Text core:require="{ formatMessage: 'sap/base/strings/formatMessage' }"
-          text="{
-            parts:[
-              {path:'i18n>welcomeMsg'},
-              {path:'/usuario/nome'}
-            ],
-            formatter: 'formatMessage'
-        }"/>
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <VBox class="sapUiTinyMargin">
+        <Label text="Ultima Ordem Criada"/>
+        <Input text="" id="lastSalesOrderID" editable="false"/>
 
-    <Button text="Hello World" press="onPress" />
+        <TextArea id="textarea1" value="" rows="8" width="100%" editable="false"/>
+      </VBox>
+      <HBox class="sapUiTinyMargin">
+        <Button text="Criar OV" press="onCreateOVCab"/>
+        <Button text="Criar OV (Deep)" press="onCreateDeepOVCab"/>
+        <Button text="Ler OV" press="onReadOVCab"/>
+        <Button text="Atualizar OV" press="onUpdateOVCab"/>
+        <Button text="Deletar OV" press="onDeleteOVCab"/>
+      </HBox>
     </Page>
 </mvc:View>

@@ -17,8 +17,11 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap
-            url: https://pretyphoid-kiara-fernlike.ngrok-free.dev
-            destination: MiniSAPGrok
+            # url: https://pretyphoid-kiara-fernlike.ngrok-free.dev
+            # destination: MiniSAPGrok
+            # url: http://sap:8000
+            # destination: sap
+            url: https://e038f76d084fe77fa656f7317a90c880.serveo.net
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
