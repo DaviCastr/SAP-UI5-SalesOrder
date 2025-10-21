@@ -98,7 +98,7 @@
             </f:Form>
         </VBox>
         <VBox id="_IDGenVBox2">
-            <Button text="New Item" id="bt-additem" press="onNewItem" class="sapUiSmallMarginEnd sapUiSmallMarginTop"/>
+            <Button text="{i18n>btnNewItem}" id="bt-additem" press="onNewItem" class="sapUiSmallMarginEnd sapUiSmallMarginTop"/>
 
             <t:Table id="table2"
 				rows="{/toItem}"

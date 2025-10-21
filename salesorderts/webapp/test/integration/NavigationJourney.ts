@@ -1,7 +1,6 @@
 /*global QUnit*/
 import Opa5 from "sap/ui/test/Opa5";
 import opaTest from "sap/ui/test/opaQunit";
-import CommonArrangements from "./CommonArrangements";
 
 // Import the page objects - they auto-register with OPA5
 import "./pages/OrderList";
@@ -13,9 +12,6 @@ Opa5.extendConfig({
 });
 
 QUnit.module("Navigation Journey");
-
-// Use the common arrangements
-const Given = CommonArrangements;
 
 setTimeout(function () {
 	opaTest("Should see the initial order list page", function (Given: any, When: any, Then: any) {
