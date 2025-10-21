@@ -16,7 +16,7 @@ server:
             - /test-resources
           url: https://ui5.sap.com
         backend:
-          - path: /sap
+          - path: /sap/opu
             # url: https://pretyphoid-kiara-fernlike.ngrok-free.dev
             # destination: MiniSAPGrok
             url: https://sap:8000

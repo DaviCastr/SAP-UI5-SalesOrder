@@ -249,6 +249,15 @@ export default class OrdemForm extends BaseController {
         }
 
         if (this.formMode == "I") {
+
+            if (this.isUsingMockData()) {
+                if (!(this as any).iLastOrdemId) {
+                    (this as any).iLastOrdemId = 1000;
+                }
+                oOrder.SalesOrderID = (this as any).iLastOrdemId;
+                (this as any).iLastOrdemId++;
+            }
+
             oView?.setBusy(true);
             oODataModel.create("/SalesOrderHeaders", oOrder, {
                 success: (oData: ODataResponse, oResponse: any) => {
@@ -278,22 +287,49 @@ export default class OrdemForm extends BaseController {
 
         } else {
 
-            oView?.setBusy(true);
+            if (this.isUsingMockData()) {
+                // usando mock, o objeto esta sendo duplicado ao invés de ser atualizado
+                // para corrigir isso, o objeto anterior esta sendo deletado
+                oODataModel.remove("/SalesOrderHeaders(" + oOrder.SalesOrderID + ")", {
+                    success: function (oData: any, oResponse: any) {
+                        oODataModel.create("/SalesOrderHeaders", oOrder, {
+                            success: function (oData: any, oResponse: any) {
+                                if (oResponse.statusCode == 204 || oResponse.statusCode == 201) {
+                                    MessageToast.show("Order Updated with success");
+                                }
+                                oView?.setBusy(false);
+                            },
+                            error: function (oResponse: any) {
+                                var oError = JSON.parse(oResponse.responseText);
+                                MessageToast.show(oError.error.message.value);
+                                oView?.setBusy(false);
+                            }
+                        }
+                        );
+                    },
+                    error: function (oResponse: any) { }
+                });
 
-            // com deep entity, o método create é usado para atualizar também
-            oODataModel.create("/SalesOrderHeaders", oOrder, {
-                success: function (oData: ODataResponse, oResponse: any) {
-                    if (oResponse.statusCode == 204 || oResponse.statusCode == 201) {
-                        MessageToast.show("Order Updated with success");
+            } else {
+
+                oView?.setBusy(true);
+
+                // com deep entity, o método create é usado para atualizar também
+                oODataModel.create("/SalesOrderHeaders", oOrder, {
+                    success: function (oData: ODataResponse, oResponse: any) {
+                        if (oResponse.statusCode == 204 || oResponse.statusCode == 201) {
+                            MessageToast.show("Order Updated with success");
+                        }
+                        oView?.setBusy(false);
+                    },
+                    error: function (oResponse: any) {
+                        var oError = JSON.parse(oResponse.responseText);
+                        MessageToast.show(oError.error.message.value);
+                        oView?.setBusy(false);
                     }
-                    oView?.setBusy(false);
-                },
-                error: function (oResponse: any) {
-                    var oError = JSON.parse(oResponse.responseText);
-                    MessageToast.show(oError.error.message.value);
-                    oView?.setBusy(false);
-                }
-            });
+                });
+
+            }
 
         }
 

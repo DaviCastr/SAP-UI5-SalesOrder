@@ -14,6 +14,14 @@ export default class BaseController extends Controller {
 
     public formatter = Formatter;
 
+    public isUsingMockData() {
+        var oParams = new URLSearchParams(window.location.search);
+        if (oParams.get("mockdata") == 'true') {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Parse string to integer with safety checks
      */
@@ -89,7 +97,7 @@ export default class BaseController extends Controller {
     protected onDeleteOrder(SalesOrderID: string | number, callback: (status: string) => void): void {
         const oModel = this.getOwnerComponent()?.getModel() as ODataModel;
         const oView = this.getView();
-        
+
         oView?.setBusy(true);
         oModel.remove(`/SalesOrderHeaders(${SalesOrderID})`, {
             success: (oData: any, oResponse: any) => {
