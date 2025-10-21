@@ -1,4 +1,6 @@
 #!/usr/bin/sh
+
+cd salesorderts
 npm install
 
 # instala as dependências
