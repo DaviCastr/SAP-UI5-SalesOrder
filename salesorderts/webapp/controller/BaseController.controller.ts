@@ -17,7 +17,7 @@ export default class BaseController extends Controller {
     /**
      * Parse string to integer with safety checks
      */
-    protected parseInt(sValue: any): number {
+    public parseInt(sValue: any): number {
         if (sValue == "" || sValue == null || sValue == undefined) {
             return 0;
         }
@@ -32,7 +32,7 @@ export default class BaseController extends Controller {
     /**
      * Parse price string to number with Brazilian format support
      */
-    protected parsePrice(sValue: any): number {
+    public parsePrice(sValue: any): number {
         if (sValue == "" || sValue == null || sValue == undefined) {
             return 0.00;
         }

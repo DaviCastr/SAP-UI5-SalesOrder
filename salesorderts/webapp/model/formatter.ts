@@ -13,6 +13,7 @@ interface Formatter {
     getIconStatus(sStatus: string): string;
     getColorStatus(sStatus: string): string;
     getStateStatus(sStatus: string): string;
+    formatCPF(sValue: string): string;
 }
 
 const Formatter: Formatter = {
@@ -84,6 +85,24 @@ const Formatter: Formatter = {
                 break;
         }
         return sState;
+    },
+
+    formatCPF(sValue: string): string {
+        // removendo tudo, exceto números
+        sValue = sValue.replace(/\D/g, '');
+
+        if (sValue == "") {
+            return "";
+        }
+
+        // adicionando pontuação
+        sValue = sValue.slice(0, 3) + "." +
+            sValue.slice(3, 6) + "." +
+            sValue.slice(6, 9) + "-" +
+            sValue.slice(9, 11);
+
+
+        return sValue;
     }
 
 };

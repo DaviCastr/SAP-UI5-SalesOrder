@@ -163,7 +163,7 @@ export default class OrdemForm extends BaseController {
         this.recalcOrder();
     }
 
-    private getOrderObject(): OrderData {
+    public getOrderObject(): OrderData {
         const oView = this.getView();
         const oModel = oView?.getModel() as JSONModel;
         const oOrder = oModel.getData() as OrderData;
@@ -207,7 +207,7 @@ export default class OrdemForm extends BaseController {
         return oOrder;
     }
 
-    private createEmptyOrderObject(): OrderData {
+    public createEmptyOrderObject(): OrderData {
         return {
             SalesOrderID: "",
             CreationDateTime: null,
