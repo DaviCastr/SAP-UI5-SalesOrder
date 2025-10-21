@@ -1,5 +1,5 @@
 /*global QUnit*/
-import Controller from "apps/dflc/salesorderts/controller/View1.controller";
+import Controller from "apps/dflc/salesorderts/controller/OrderList.controller";
 
 QUnit.module("View1 Controller");
 

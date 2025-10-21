@@ -66,7 +66,10 @@
       "": {
         "dataSource": "mainService",
         "preload": true,
-        "settings": {}
+        "settings": {
+          "useBatch": true
+        }
+        
       }
     },
     "resources": {
@@ -90,17 +93,38 @@
       },
       "routes": [
         {
-          "name": "RouteView1",
+          "name": "RouteOrderList",
           "pattern": ":?query:",
           "target": [
-            "TargetView1"
+            "TargetOrderList"
+          ]
+        },
+        {
+          "name": "RouteOrderNew",
+          "pattern": "SalesOrderHeader/new",
+          "target": [
+            "TargetOrderForm"
+          ]
+        },
+        {
+          "name": "RouteOrderEdit",
+          "pattern": "SalesOrderHeader({SalesOrderID})/edit",
+          "target": [
+            "TargetOrderForm"
           ]
         }
       ],
       "targets": {
-        "TargetView1": {
-          "id": "View1",
-          "name": "View1"
+        "TargetOrderList": {
+          "id": "OrderList",
+          "name": "OrderList"
+        },
+        "TargetOrderForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "OrderForm",
+          "viewName": "OrderForm"
         }
       }
     },
