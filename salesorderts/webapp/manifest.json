@@ -25,6 +25,20 @@
           "odataVersion": "2.0"
         }
       }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "SalesManagerTs-manage": {
+          "semanticObject": "SalesManagerTs",
+          "action": "manage",
+          "title": "{{SalesManagerTs-manage.flpTitle}}",
+          "subTitle": "{{SalesManagerTs-manage.flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
     }
   },
   "sap.ui": {
@@ -69,7 +83,6 @@
         "settings": {
           "useBatch": true
         }
-        
       }
     },
     "resources": {
@@ -134,5 +147,9 @@
       "id": "App",
       "async": true
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "appsdflcsalesorderts"
   }
 }
